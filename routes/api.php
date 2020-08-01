@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::apiResources([
-    'skill' => 'API\SkillController',
-    'project' => 'API\ProjectController',
-    'social-media' => 'API\SocialMediaController'
-]);
+Route::namespace('API')->group(function(){
+    Route::prefix('skill')->group(function(){
+        Route::get('/', 'SkillController@index');
+        Route::post('post', 'SkillController@store');
+        Route::get('{skill}', 'SkillController@show');
+        Route::put('{skill}', 'SkillController@update');
+        Route::delete('{skill}', 'SkillController@destroy');
+    });
+});

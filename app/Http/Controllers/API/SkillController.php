@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SkillRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class SkillController extends Controller
 {
@@ -31,22 +32,22 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(),
+        [
             'name' => 'required|unique:my_skill|max:50',
-            'category' => 'required|regex:/^[\pL\s\-]+$/u|max:40',
-            'start_from' => 'required|digits:4|integer|min:1900|max:' . Carbon::tomorrow()->year
+            'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
         ],
         [
-            'name.required' => 'A name of skill is required',
-            'category.required' => 'A category of skill is required',
-            'start_from.required' => 'A start from of skill is required',
+            'name.unique' => 'Skill dengan nama " ' . $request->name . ' " sudah ada',
+            'name.required' => 'Masukkan name skill',
+            'category.required' => 'Masukkan category skill',
+            'category.in' => 'Pilihan category skill salah',
         ]);
-
         if ($validator->fails()) {
-            $errors = $validator->errors();
-            foreach($errors->all() as $error) {
-                return response()->json($error, 400);
-            }
+            return response()->json([
+                'success' => false,
+                'error' => $validator->errors()
+            ], 400);
         }
         else {
             $createSkill = Skill::create([
@@ -82,11 +83,24 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $skill = Skill::findOrFail($id)->update([
-            'name' => $request->name, 
-            'category' => $request->category
+        $validator = Validator::make($request->all(),
+        [
+            'name' => 'required',
+            'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
+        ],
+        [
+            'name.required' => 'Masukkan name skill',
+            'category.required' => 'Masukkan category skill',
+            'category.in' => 'Pilihan category skill salah',
         ]);
-        return response()->json($skill, 200);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        else {
+            $skill = Skill::findOrFail($id);
+            $skill->update($request->all());
+            return response()->json($skill, 200);
+        }
     }
 
     /**
@@ -99,6 +113,6 @@ class SkillController extends Controller
     {
         $deleteSkill = Skill::findOrFail($id);
         $deleteSkill->delete();
-        return response()->json(null, 204);
+        return 'berhasil delete skill';
     }
 }
