@@ -14,7 +14,7 @@ class SkillController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the skill.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +25,7 @@ class SkillController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly skill.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -34,14 +34,8 @@ class SkillController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'name' => 'required|unique:my_skill|max:50',
+            'name' => 'required|alpha_spaces|unique:my_skill|max:50',
             'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
-        ],
-        [
-            'name.unique' => 'Skill dengan nama " ' . $request->name . ' " sudah ada',
-            'name.required' => 'Masukkan name skill',
-            'category.required' => 'Masukkan category skill',
-            'category.in' => 'Pilihan category skill salah',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -58,12 +52,13 @@ class SkillController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Berhasil menambah skill',
+                'data' => $createSkill
             ], 201);
         }
     }
 
     /**
-     * Display the specified resource.
+     * Displaying skill
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -75,36 +70,40 @@ class SkillController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update skill
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  id = $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(),
         [
-            'name' => 'required',
+            'name' => 'required|alpha_spaces|max:50',
             'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
-        ],
-        [
-            'name.required' => 'Masukkan name skill',
-            'category.required' => 'Masukkan category skill',
-            'category.in' => 'Pilihan category skill salah',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()
+            ], 400);
         }
         else {
-            $skill = Skill::findOrFail($id);
-            $skill->update($request->all());
-            return response()->json($skill, 200);
+            $createSkill = Skill::updateOrCreate(
+                ['name' => $request->name],
+                ['category' => $request->category, 'start_from' => $request->start_from]
+            );
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil mengubah skill',
+                'data' => $createSkill
+            ], 201);
         }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified skill.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::namespace('API')->group(function(){
-    Route::prefix('skill')->group(function(){
-        Route::get('/', 'SkillController@index');
-        Route::post('post', 'SkillController@store');
-        Route::get('{skill}', 'SkillController@show');
-        Route::put('{skill}', 'SkillController@update');
-        Route::delete('{skill}', 'SkillController@destroy');
-    });
+    Route::apiResource('skill', 'SkillController');
+    Route::apiResource('project', 'ProjectController');
 });
