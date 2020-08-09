@@ -91,8 +91,12 @@ class SkillController extends Controller
         }
         else {
             $createSkill = Skill::updateOrCreate(
-                ['name' => $request->name],
-                ['category' => $request->category, 'start_from' => $request->start_from]
+                ['id' => $id],
+                [
+                    'name' => $request->name, 
+                    'category' => $request->category, 
+                    'start_from' => $request->start_from
+                ]
             );
             return response()->json([
                 'success' => true,
