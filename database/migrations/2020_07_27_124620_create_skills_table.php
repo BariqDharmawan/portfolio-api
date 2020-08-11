@@ -14,7 +14,7 @@ class CreateSkillsTable extends Migration
     public function up()
     {
         Schema::create('my_skill', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             //frontend-framework: bootstrap, vuejs, jquery. backend-framework: laravel, adonis. 
             //basic-stack: php, js, html, css. tools: git, webpack,

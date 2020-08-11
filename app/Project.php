@@ -3,7 +3,8 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 class Project extends Model
 {
@@ -11,7 +12,7 @@ class Project extends Model
     protected $fillable = ['title', 'finished_date', 'is_teamwork', 'desc'];
     protected $casts = ['is_teamwork' => 'boolean'];
     protected $dates = ['finished_date'];
-    
+
     public $timestamps = false;
     public function getIsTeamWorkAttribute($value)
     {
@@ -25,6 +26,15 @@ class Project extends Model
     public function getFinishedDateAttribute($value)
     {
         return Carbon::parse($value)->toDateTimeString();
+    }    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 
 }

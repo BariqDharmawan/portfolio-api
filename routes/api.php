@@ -19,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::namespace('API')->group(function(){
     Route::apiResource('skill', 'SkillController');
+    Route::get('api/skill/{skill:slug}', 'SkillController@show')->name('skill.show');
     Route::apiResource('project', 'ProjectController');
 });

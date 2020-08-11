@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest('finished_date')->get();
         return response()->json($projects);
     }
 
@@ -43,7 +43,7 @@ class ProjectController extends Controller
             ], 400);
         }
         else {
-            $addProject = Project::create([
+            Project::create([
                 'title' => $request->title,
                 'finished_date' => $request->finished_date,
                 'is_teamwork' => $request->boolean('is_teamwork'),
@@ -52,7 +52,7 @@ class ProjectController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Berhasil menambahkan project baru',
-                'data' => $addProject
+                'data' => Project::all()->last()
             ], 201);
         }
     }
@@ -60,16 +60,13 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $project = Project::findOrFail($id);
-        return response()->json([
-            'success' => true,
-            'data' => $project
-        ]);
+        $project = Project::where('slug', $slug)->firstOrFail();
+        return response()->json($project);
     }
 
     /**

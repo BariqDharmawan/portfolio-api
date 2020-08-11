@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateProjectsTable extends Migration
 {
@@ -14,8 +15,9 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('my_project', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('title');
+            $table->string('slug');
             $table->date('finished_date');
             $table->boolean('is_teamwork');
             $table->text('desc');

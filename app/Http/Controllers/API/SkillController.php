@@ -20,8 +20,8 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills = Skill::all();
-        return $skills;
+        $skills = Skill::latest('start_from')->get();
+        return response()->json($skills);
     }
 
     /**
