@@ -24,11 +24,22 @@ class SkillRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:my_skill|max:50',
-            'category' => 'required|regex:/^[\pL\s\-]+$/u|max:40',
-            'start_from' => 'required|digits:4|integer|min:1900|max:' . Carbon::tomorrow()->year
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'required|alpha_space|unique:my_skill|max:50',
+                    'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
+                    'start_from' => 'required|integer|min:2000|max:2155'
+                ];
+                break;
+            case 'PUT':
+                return [
+                    'name' => 'required|alpha_space|max:50',
+                    'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
+                    'start_from' => 'required|integer|min:2000|max:2155'
+                ];
+            break;
+        }
     }
 
     /**
@@ -39,9 +50,7 @@ class SkillRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'A name of skill is required',
-            'category.required' => 'A category of skill is required',
-            'start_from.required' => 'A start from of skill is required',
+            'start_from.min' => 'Start_from field should be minimum 2000 masehi',
         ];
     }
 }

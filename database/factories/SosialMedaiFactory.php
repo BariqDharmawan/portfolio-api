@@ -12,8 +12,8 @@ $factory->define(SosialMedia::class, function (Faker $faker) {
         )),
         'url' => $faker->unique()->randomElement($array = array(
             'https://www.instagram.com/bariqdharmawans', 'https://www.facebook.com/BariqDharmawan16', 'https://wa.me/6287771406656', 
-            'https://twitter.com/BariqDharmawan', 'https://www.linkedin.com/in/dharmawan03/', 
-            'https://bitbucket.org/dharmawans/', 'dharmawan.muhammad03@gmail.com'
+            'https://twitter.com/BariqDharmawan', 'https://www.linkedin.com/in/dharmawan03', 
+            'https://bitbucket.org/dharmawans', 'dharmawan.muhammad03@gmail.com'
         ))
     ];
 });

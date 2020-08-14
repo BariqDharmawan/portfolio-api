@@ -12,29 +12,17 @@ class Project extends Model
     protected $fillable = ['title', 'finished_date', 'is_teamwork', 'desc'];
     protected $casts = ['is_teamwork' => 'boolean'];
     protected $dates = ['finished_date'];
+    protected $appends = ['is_teamwork'];
 
     public $timestamps = false;
     public function getIsTeamWorkAttribute($value)
     {
-        if ($value == true) {
-            return 'This is teamwork project';
-        }
-        else {
-            return 'This is self project';
-        }
-    }
-    public function getFinishedDateAttribute($value)
-    {
-        return Carbon::parse($value)->toDateTimeString();
-    }    
-    public function getRouteKeyName()
-    {
-        return 'slug';
+        return $value == true ? 'This is teamwork project' : 'This is self project';
     }
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['slug'] = Str::of($value)->replace('/', '-')->slug('-');
     }
 
 }

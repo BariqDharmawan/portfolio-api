@@ -118,6 +118,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'year' => "The ':attribute' must be a valid year and it should be maximum 2155 masehi.",
+    'alpha_spaces' => 'The :attribute value must be only alpha and space followed.',
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +149,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        //
+    ],
 
 ];

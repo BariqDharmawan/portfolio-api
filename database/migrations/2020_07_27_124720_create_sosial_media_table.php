@@ -14,10 +14,14 @@ class CreateSosialMediaTable extends Migration
     public function up()
     {
         Schema::create('social_media', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->uuid('id')->primary();
+            $table->enum('name', [
+                'Instagram', 'Facebook', 'Whatsapp', 'Twitter', 'Linkedin', 'Bitbucket',
+                'Gmail', 'Snapchat', 'Pinterest', 'Line', 'Telegram', 'Medium', 'Path'
+            ]);
             $table->string('url');
-            $table->timestamps();
+            $table->string('slug');
+            $table->timestamp('created_at');
         });
     }
 

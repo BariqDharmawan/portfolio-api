@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSkillsTable extends Migration
 {
@@ -16,6 +17,7 @@ class CreateSkillsTable extends Migration
         Schema::create('my_skill', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('slug');
             //frontend-framework: bootstrap, vuejs, jquery. backend-framework: laravel, adonis. 
             //basic-stack: php, js, html, css. tools: git, webpack,
             $table->enum('category', ['frontend-framework', 'backend-framework', 'basic-stack', 'tools', 'preprocessor']);
@@ -30,6 +32,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('my_skill');
     }
 }

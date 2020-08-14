@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::namespace('API')->group(function(){
-    Route::apiResource('skill', 'SkillController');
-    Route::get('api/skill/{skill:slug}', 'SkillController@show')->name('skill.show');
-    Route::apiResource('project', 'ProjectController');
+    Route::apiResource('skill', 'SkillController')->except('update');
+    Route::apiResource('contact', 'ContactController')->except('update');
+    Route::apiResource('project', 'ProjectController')->except('update');
+    Route::match(['post', 'put'], 'skill/{id?}', 'SkillController@save')->name('skill.save');
+    Route::match(['post', 'put'], 'contact/{id?}', 'ContactController@save')->name('contact.save');
+    Route::match(['post', 'put'], 'project/{id?}', 'ProjectController@save')->name('project.save');
 });
