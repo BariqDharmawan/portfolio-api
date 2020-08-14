@@ -15,6 +15,7 @@ $factory->define(SosialMedia::class, function (Faker $faker) {
             'https://www.instagram.com/bariqdharmawans', 'https://www.facebook.com/BariqDharmawan16', 'https://wa.me/6287771406656',
             'https://twitter.com/BariqDharmawan', 'https://www.linkedin.com/in/dharmawan03',
             'https://bitbucket.org/dharmawans', 'dharmawan.muhammad03@gmail.com'
-        ))
+        )),
+        'user_id' => 1
     ];
 });

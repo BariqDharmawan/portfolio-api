@@ -14,6 +14,7 @@ $factory->define(Skill::class, function (Faker $faker) {
         'category' => $faker->randomElement($array = array(
             'frontend-framework', 'backend-framework', 'basic-stack', 'tools', 'preprocessor'
         )),
-        'start_from' => $faker->randomElement($array = array(2016, 2017, 2018, 2019, 2020))
+        'start_from' => $faker->randomElement($array = array(2016, 2017, 2018, 2019, 2020)),
+        'user_id' => 1
     ];
 });

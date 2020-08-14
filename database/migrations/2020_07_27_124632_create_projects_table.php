@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->date('finished_date');
             $table->boolean('is_teamwork');
             $table->text('desc');
+            $table->unsignedInteger('user_id')->default(1);
         });
     }
 

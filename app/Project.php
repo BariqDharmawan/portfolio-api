@@ -9,7 +9,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $table = 'my_project';
-    protected $fillable = ['title', 'finished_date', 'is_teamwork', 'desc'];
+    protected $fillable = ['title', 'finished_date', 'is_teamwork', 'desc', 'user_id'];
     protected $casts = ['is_teamwork' => 'boolean'];
     protected $dates = ['finished_date'];
     protected $appends = ['is_teamwork'];

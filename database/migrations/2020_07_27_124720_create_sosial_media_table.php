@@ -21,6 +21,7 @@ class CreateSosialMediaTable extends Migration
             ]);
             $table->string('url');
             $table->string('slug');
+            $table->unsignedInteger('user_id')->default(1);
             $table->timestamp('created_at');
         });
     }

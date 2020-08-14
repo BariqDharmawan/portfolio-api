@@ -12,6 +12,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['username' => 'bariqdharmawan', 'password' => 'gakadapassword']);
+        User::create([
+            'username' => 'bariqdharmawan',
+            'password' => 'gakadapassword'
+        ]);
+
+        factory(User::class, 4)->create()->each(function ($user) {
+            $user->make();
+        });
     }
 }

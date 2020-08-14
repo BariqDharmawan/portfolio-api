@@ -9,7 +9,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 class Skill extends Model
 {
     protected $table = 'my_skill';
-    protected $fillable = ['name', 'category', 'start_from'];
+    protected $fillable = ['name', 'category', 'start_from', 'user_id'];
 
     public $timestamps = false;
     public function setNameAttribute($value)
