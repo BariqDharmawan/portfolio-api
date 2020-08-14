@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Project;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,48 +25,49 @@ class ProjectController extends Controller
     }
 
     /**
-     * update / create new project
+     * add new project
      *
      * @param  ProjectRequest  $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function save(ProjectRequest $request, $id)
+    public function store(ProjectRequest $request)
     {
-        $project = Project::updateOrCreate(
-            ['id' => $id],
-            [
-                'title' => ucwords($request->title),
-                'finished_date' => $request->finished_date,
-                'is_teamwork' => $request->boolean('is_teamwork'),
-                'desc' => $request->desc
-            ]
-        );
-        
-        $message = '';
-        $jsonCode = '';
-        switch ($request->method()) {
-            case 'POST':
-                $message = 'Succesfully add new project';
-                $jsonCode = 201;
-                break;
-            case 'PUT':
-                $message = 'Succesfully upated project named ' . ucwords($request->title);
-                $jsonCode = 200;
-            break;
-        }
-        
+        $project = Project::create([
+            'title' => ucwords($request->title),
+            'finished_date' => $request->finished_date,
+            'is_teamwork' => $request->boolean('is_teamwork'),
+            'desc' => $request->desc
+        ]);
+
         return response()->json([
             'success' => true,
-            'message' => $message,
+            'message' => 'Successfully add new project with title ' . $project->title,
             'data' => $project
-        ], $jsonCode);
+        ], 201);
+    }
+
+    public function update(ProjectRequest $request, $id)
+    {
+        $editProject = Project::findOrFail($id);
+        $editProject->update([
+            'title' => ucwords($request->title),
+            'finished_date' => $request->finished_date,
+            'is_teamwork' => $request->boolean('is_teamwork'),
+            'desc' => $request->desc
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully update project ' . $editProject->title,
+            'data' => $editProject
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -77,7 +79,7 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {
