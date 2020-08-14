@@ -29,14 +29,14 @@ class SkillRequest extends FormRequest
                 return [
                     'name' => 'required|alpha_space|unique:my_skill|max:50',
                     'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
-                    'start_from' => 'required|integer|min:2000|max:2155'
+                    'start_from' => 'required|integer|min:' . Carbon::now()->startOfCentury()->year . '|max:' . date('Y')
                 ];
                 break;
             case 'PUT':
                 return [
                     'name' => 'required|alpha_space|max:50',
                     'category' => 'required|in:frontend-framework,backend-framework,basic-stack,tools,preprocessor',
-                    'start_from' => 'required|integer|min:2000|max:2155'
+                    'start_from' => 'required|integer|min:' . Carbon::now()->startOfCentury()->year . '|max:' . date('Y')
                 ];
             break;
         }
@@ -50,7 +50,8 @@ class SkillRequest extends FormRequest
     public function messages()
     {
         return [
-            'start_from.min' => 'Start_from field should be minimum 2000 masehi',
+            'start_from.min' => 'The start from must be at least year ' . Carbon::now()->startOfCentury()->year,
+            'start_from.max' => 'The start from must not exceed than year ' . date('Y'),
         ];
     }
 }

@@ -4,13 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Skill;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Validation\Rule;
 use App\Http\Requests\SkillRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
 class SkillController extends Controller
 {
@@ -18,7 +16,7 @@ class SkillController extends Controller
     /**
      * Display all skill.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -27,47 +25,30 @@ class SkillController extends Controller
     }
 
     /**
-     * Store a newly skill.
-     *
-     * @param  SkillRequest  $request
-     * @return Response
+     * Store a newly skill
+     * @param SkillRequest $request
+     * @return JsonResponse
      */
-    public function save(SkillRequest $request, $id)
+    public function store(SkillRequest $request)
     {
-        $newSkill = Skill::updateOrCreate(
-            ['id', $id],
-            [
-                'name' => ucwords($request->name),
-                'category' => $request->category,
-                'start_from' => $request->start_from
-            ]
-        );
+        $newSkill = Skill::create([
+            'name' => ucwords($request->name),
+            'category' => $request->category,
+            'start_from' => $request->start_from
+        ]);
 
-        $message = '';
-        $jsonCode = '';
-        switch ($request->method()) {
-            case 'POST':
-                $message = 'Succesfully add new skill';
-                $jsonCode = 201;
-                break;
-            case 'PUT':
-                $message = 'Succesfully updated skill named ' . ucwords($request->name);
-                $jsonCode = 200;
-            break;
-        }
-        
         return response()->json([
             'success' => true,
-            'message' => $message,
-            'data' => $newSkill
-        ], $jsonCode);
+            'message' => 'Successfully add new skill name ' . $newSkill->name,
+            'data' => Skill::where('id', $newSkill->id)->first()
+        ], 201);
     }
 
     /**
      * Displaying specified skill
      *
      * @param  $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -75,16 +56,35 @@ class SkillController extends Controller
         return response()->json($singleSkill);
     }
 
+    public function update(SkillRequest $request, $id)
+    {
+        $skill = Skill::findOrFail($id);
+        $skill->update([
+            'name' => ucwords($request->name),
+            'category' => $request->category,
+            'start_from' => $request->start_from
+        ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully updated skill named ' . $skill->name,
+            'data' => Skill::where('id', $skill->id)->first()
+        ], 200);
+    }
+
     /**
      * Remove the specified skill.
      *
      * @param $id
-     * @return Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {
         $deleteSkill = Skill::findOrFail($id);
         $deleteSkill->delete();
-        return 'Successfully deleted skill called ' . $deleteSkill->name;
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully deleted skill called ' . $deleteSkill->name,
+            'data' => $deleteSkill
+        ]);
     }
 }
