@@ -25,13 +25,15 @@ class ContactRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'name' =>  ['required', 'unique:social_media', 'max:50'],
+                'name' => ['required', 'in:Instagram,Facebook,Whatsapp,Twitter,Linkedin,Bitbucket,
+                            Gmail,Snapchat,Pinterest,Line,Telegram,Medium,Path', 'unique:social_media', 'max:50'],
                 'url' => ['required', 'string']
             ];
         }
         else {
             return [
-                'name' =>  ['required', 'max:50'],
+                'name' =>  ['required', 'in:Instagram,Facebook,Whatsapp,Twitter,Linkedin,Bitbucket,
+                             Gmail,Snapchat,Pinterest,Line,Telegram,Medium,Path', 'max:50'],
                 'url' => ['required', 'string']
             ];
         }

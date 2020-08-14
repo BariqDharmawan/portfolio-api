@@ -14,10 +14,10 @@ class SosialMedia extends Model
     public $timestamps = false;
     public function setNameAttribute($value)
     {
-        // $this->attributes['name'] = $value;
+        $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
-    public function setCreatedAtAttribute($value) { 
-        $this->attributes['created_at'] = Carbon::now(); 
+    public function setCreatedAtAttribute() {
+        $this->attributes['created_at'] = Carbon::now();
     }
 }

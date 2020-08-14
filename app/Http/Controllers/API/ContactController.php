@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\SosialMedia;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -27,40 +28,27 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  ContactRequest  $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function store(ContactRequest $request, $id)
+    public function store(ContactRequest $request)
     {
-        $contact = SosialMedia::updateOrCreate(
-            ['id' => $id],
-            ['name' => $request->name, 'url' => $request->url]
-        );
-
-        $message = '';
-        $jsonCode = '';
-        switch ($request->method()) {
-            case 'POST':
-                $message = 'succesfully add new contact';
-                $jsonCode = 201;
-                break;
-            case 'PUT':
-                $message = 'Succesfully update your ' . $updateSocial->name . ' detail';
-                $jsonCode = 200;
-            break;
-        }
+        $contact = SosialMedia::create([
+            'name' => ucwords($request->name),
+            'url' => $request->url
+        ]);
 
         return response()->json([
             'success' => true,
-            'message' => $message,
+            'message' => 'Successfully add your ' . $contact->name . ' account',
             'data' => $contact
-        ], $jsonCode);
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      *
      * @param $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -69,15 +57,42 @@ class ContactController extends Controller
     }
 
     /**
+     * Update the specified resource.
+     *
+     * @param ContactRequest $request
+     * @param $id
+     * @return JsonResponse
+     */
+    public function update(ContactRequest $request, $id)
+    {
+        $updateContact = SosialMedia::findOrFail($id);
+        $updateContact->update([
+            'name' => ucwords($request->name),
+            'url' => $request->url
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully update your ' . $updateContact->name . ' account',
+            'data' => $updateContact
+        ], 200);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {
-        $deleteSosmed = SosialMedia::findOrFail($id);
-        $deleteSosmed->delete();
-        return 'Succesfully remove your ' . $deleteSosmed->name . ' account';
+        $deleteContact = SosialMedia::findOrFail($id);
+        $deleteContact->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully remove your ' . $deleteContact->name . ' account',
+            'data' => $deleteContact
+        ]);
     }
 }
