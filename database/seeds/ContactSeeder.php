@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
 
-class SosialMediaSeeder extends Seeder
+class ContactSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +12,8 @@ class SosialMediaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\SosialMedia::class, 7)->create()->each(function ($sosmed) {
-            $sosmed->make();
+        factory(Contact::class, 7)->create()->each(function ($contact) {
+            $contact->make();
         });
     }
 }

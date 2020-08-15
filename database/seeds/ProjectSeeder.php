@@ -1,8 +1,6 @@
 <?php
 
-use App\Project;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder

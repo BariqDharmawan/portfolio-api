@@ -14,13 +14,15 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('my_skill', function (Blueprint $table) {
+        Schema::create('skill', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('slug');
             //frontend-framework: bootstrap, vue js, jquery. backend-framework: laravel, adonis.
             //basic-stack: php, js, html, css. tools: git, webpack,
-            $table->enum('category', ['frontend-framework', 'backend-framework', 'basic-stack', 'tools', 'preprocessor']);
+            $table->enum('category', [
+                'frontend-framework', 'backend-framework', 'basic-stack', 'tools', 'preprocessor'
+            ]);
             $table->year('start_from');
             $table->unsignedInteger('user_id');
         });

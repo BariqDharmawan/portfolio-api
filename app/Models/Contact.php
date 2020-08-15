@@ -1,14 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-class SosialMedia extends Model
+class Contact extends Model
 {
-    protected $table = 'social_media';
+    protected $table = 'my_contact';
     protected $fillable = ['name', 'url', 'user_id'];
 
     public $timestamps = false;

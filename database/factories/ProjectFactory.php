@@ -1,9 +1,11 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
-use App\Project;
+use App\Models\Project;
+use App\Models\User;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Project::class, function (Faker $faker) {
     return [
@@ -14,6 +16,6 @@ $factory->define(Project::class, function (Faker $faker) {
         'finished_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'is_teamwork' => $faker->boolean($chanceOfGettingTrue = 50),
         'desc' => $faker->text($maxNbChars = 200),
-        'user_id' => 1
+        'user_id' => User::where('username', 'bariqdharmawan')->first()
     ];
 });

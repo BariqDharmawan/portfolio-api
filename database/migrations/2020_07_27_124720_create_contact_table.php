@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSosialMediaTable extends Migration
+class CreateContactTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSosialMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_media', function (Blueprint $table) {
+        Schema::create('my_contact', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->enum('name', [
                 'Instagram', 'Facebook', 'Whatsapp', 'Twitter', 'Linkedin', 'Bitbucket',
@@ -21,7 +21,7 @@ class CreateSosialMediaTable extends Migration
             ]);
             $table->string('url');
             $table->string('slug');
-            $table->unsignedInteger('user_id')->default(1);
+            $table->unsignedInteger('user_id');
             $table->timestamp('created_at');
         });
     }

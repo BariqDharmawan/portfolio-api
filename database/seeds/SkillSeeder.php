@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Skill;
 use Illuminate\Database\Seeder;
 
 class SkillSeeder extends Seeder
@@ -11,7 +12,7 @@ class SkillSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Skill::class, 12)->create()->each(function ($skill) {
+        factory(Skill::class, 12)->create()->each(function ($skill) {
             $skill->make();
         });
     }

@@ -1,14 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $table = 'my_project';
+    protected $table = 'project';
     protected $fillable = ['title', 'finished_date', 'is_teamwork', 'desc', 'user_id'];
     protected $casts = ['is_teamwork' => 'boolean'];
     protected $dates = ['finished_date'];

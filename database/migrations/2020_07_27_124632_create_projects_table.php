@@ -14,14 +14,14 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('my_project', function (Blueprint $table) {
+        Schema::create('project', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('slug');
             $table->date('finished_date');
             $table->boolean('is_teamwork');
             $table->text('desc');
-            $table->unsignedInteger('user_id')->default(1);
+            $table->unsignedInteger('user_id');
         });
     }
 

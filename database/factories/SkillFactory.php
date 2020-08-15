@@ -1,9 +1,10 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
-use App\Skill;
-use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\Skill;
+use Illuminate\Database\Eloquent\Factory;
 use Faker\Generator as Faker;
 
 $factory->define(Skill::class, function (Faker $faker) {
@@ -15,6 +16,6 @@ $factory->define(Skill::class, function (Faker $faker) {
             'frontend-framework', 'backend-framework', 'basic-stack', 'tools', 'preprocessor'
         )),
         'start_from' => $faker->randomElement($array = array(2016, 2017, 2018, 2019, 2020)),
-        'user_id' => 1
+        'user_id' => User::where('username', 'bariqdharmawan')->first()
     ];
 });
