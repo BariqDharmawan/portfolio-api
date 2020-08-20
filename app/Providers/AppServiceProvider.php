@@ -2,12 +2,9 @@
 
 namespace App\Providers;
 
-use App\Skill;
-use App\Project;
-use App\Observers\SlugObserver;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-// use App\UuidHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('alpha_space', function ($attribute, $value) {
-            return preg_match('/^[\pL\s]+$/u', $value); 
+            return preg_match('/^[\pL\s]+$/u', $value);
         });
-        
+        JsonResource::withoutWrapping();
     }
 }

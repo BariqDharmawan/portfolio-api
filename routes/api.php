@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::namespace('API')->group(function(){
     Route::apiResources([
+        'skill-category' => 'SkillCategoryController',
         'skill' => 'SkillController',
         'contact' => 'ContactController',
         'project' => 'ProjectController'

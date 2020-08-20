@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Skill;
-use Carbon\Carbon;
+use App\Models\Skill;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Str;
-use Illuminate\Http\Response;
 use App\Http\Requests\SkillRequest;
 use App\Http\Controllers\Controller;
 
 class SkillController extends Controller
 {
 
-    /**
-     * Display all skill.
-     *
-     * @return JsonResponse
-     */
     public function index()
     {
-        $allSkill = Skill::latest('start_from')->get();
-        return response()->json($allSkill);
+        return response()->json(Skill::all());
     }
 
     /**
@@ -40,34 +31,28 @@ class SkillController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Successfully add new skill name ' . $newSkill->name,
-            'data' => Skill::where('id', $newSkill->id)->first()
+            'data' => Skill::findOrFail($newSkill->id)
         ], 201);
     }
 
-    /**
-     * Displaying specified skill
-     *
-     * @param  $id
-     * @return JsonResponse
-     */
     public function show($id)
     {
-        $singleSkill = Skill::findOrFail($id);
-        return response()->json($singleSkill);
+        return response()->json(Skill::findOrFail($id));
     }
 
     public function update(SkillRequest $request, $id)
     {
-        $skill = Skill::findOrFail($id);
-        $skill->update([
+        $editSkill = Skill::findOrFail($id);
+        $editSkill->update([
             'name' => ucwords($request->name),
             'category' => $request->category,
             'start_from' => $request->start_from
         ]);
+
         return response()->json([
             'success' => true,
-            'message' => 'Successfully updated skill named ' . $skill->name,
-            'data' => Skill::where('id', $skill->id)->first()
+            'message' => 'Successfully updated skill named ' . $editSkill->name,
+            'data' => Skill::findOrFail($editSkill->id)
         ], 200);
     }
 

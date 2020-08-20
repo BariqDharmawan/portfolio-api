@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\SosialMedia;
+use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
-use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -20,7 +17,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $socialMedia = SosialMedia::orderBy('slug', 'ASC')->get();
+        $socialMedia = Contact::orderBy('slug', 'ASC')->get();
         return response()->json($socialMedia);
     }
 
@@ -32,7 +29,7 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $contact = SosialMedia::create([
+        $contact = Contact::create([
             'name' => ucwords($request->name),
             'url' => $request->url
         ]);
@@ -52,7 +49,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        $editContact = SosialMedia::findOrFail($id);
+        $editContact = Contact::findOrFail($id);
         return response()->json($editContact);
     }
 
@@ -65,7 +62,7 @@ class ContactController extends Controller
      */
     public function update(ContactRequest $request, $id)
     {
-        $updateContact = SosialMedia::findOrFail($id);
+        $updateContact = Contact::findOrFail($id);
         $updateContact->update([
             'name' => ucwords($request->name),
             'url' => $request->url
@@ -86,7 +83,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $deleteContact = SosialMedia::findOrFail($id);
+        $deleteContact = Contact::findOrFail($id);
         $deleteContact->delete();
 
         return response()->json([

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Project;
+use App\Models\Project;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
-use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
