@@ -1,0 +1,33 @@
+@use "color";
+
+@mixin linkIndicator {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  position: absolute;
+  bottom: -12px;
+  background-color: color.$yellow;
+  transition: all 150ms;
+}
+@mixin flexCenterCrossAxis {
+  display: flex;
+  align-items: center;
+}
+@mixin inlineFlexCenterCrossAxis {
+  display: flex;
+  align-items: center;
+}
+@mixin flexCenterMainAxis {
+  display: flex;
+  justify-content: center;
+}
+@mixin flexCenterAllAxis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin sameDimension($size) {
+  width: $size;
+  height: $size;
+}

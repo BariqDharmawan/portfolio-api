@@ -1,0 +1,747 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans|Roboto);/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+
+[dir=rtl] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  outline: none;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.nav-scrolled {
+  background-color: #2a2a2a;
+  transform: scale(1);
+  box-shadow: 0 3px 4px 2px rgba(42, 42, 42, 0.3);
+}
+
+.on-bottom {
+  background-color: #db9240;
+  color: #2a2a2a;
+}
+
+.on-bottom #brand, .on-bottom #brand:hover a:first-child {
+  color: #2a2a2a;
+}
+
+.on-bottom li:not(#brand) a::after, .on-bottom li:not(#brand) a::before {
+  background-color: #2a2a2a;
+}
+
+.slick-arrow {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dddddd;
+  border-radius: 50%;
+}
+
+.slick-arrow-prev, .slick-arrow-next {
+  color: #2a2a2a;
+}
+
+.slick-arrow-next {
+  right: 20%;
+}
+
+.slick-arrow-prev {
+  left: 20%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+box-icon[position=left] {
+  margin-right: 5px;
+}
+
+box-icon[position=center] {
+  margin: 0 5px;
+}
+
+box-icon[position=right] {
+  margin-left: 5px;
+}
+
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes blink-caret {
+  from {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #db9240;
+  }
+}
+@keyframes blink-caret {
+  from {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #db9240;
+  }
+}
+@-webkit-keyframes showSecondHeading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes showSecondHeading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+nav {
+  box-shadow: 0 3px 4px 2px rgba(42, 42, 42, 0.3);
+  text-transform: uppercase;
+  transition: all 150ms;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  background-color: #2a2a2a;
+  width: 100%;
+  padding: 0 15px;
+  color: #ebebeb;
+}
+nav ul {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+nav ul #brand {
+  font-weight: bolder;
+  font-family: "Kaushan Script", cursive;
+  font-size: 1.2em;
+  order: -2;
+  height: 60px;
+  padding: 0;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: #edc63e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav ul #brand box-icon {
+  font-size: 25px;
+  font-weight: bolder;
+}
+nav ul li:hover a {
+  color: #edc63e;
+}
+nav ul li:not(#brand) {
+  display: flex;
+  align-items: center;
+  height: 0;
+  transition: all 150ms;
+  overflow: hidden;
+}
+nav ul li:not(#brand) a {
+  width: 100%;
+  height: 100%;
+  transition: all 150ms;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  align-items: center;
+}
+nav ul li:not(#brand).show-menu {
+  height: 55px;
+}
+nav ul a:first-child {
+  padding-left: 0 !important;
+}
+
+header {
+  background-image: url("../../img/header.webp");
+  height: 60vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-color: #2a2a2a;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header h1, header h2 {
+  text-shadow: 2px 2px 3px rgba(42, 42, 42, 0.4);
+}
+header h1 {
+  font-size: 38px;
+  color: #ebebeb;
+  position: relative;
+  font-style: italic;
+  padding: 0 10px;
+  overflow-x: hidden;
+  border-right: 4px solid transparent;
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  -webkit-animation: typing 2.5s steps(30, end), blink-caret 700ms step-end 5;
+          animation: typing 2.5s steps(30, end), blink-caret 700ms step-end 5;
+}
+header h2 {
+  margin-top: 15px;
+  font-size: 17px;
+  color: #ebebeb;
+  overflow: hidden;
+  transition: all 250ms;
+  opacity: 0;
+  -webkit-animation-name: showSecondHeading;
+          animation-name: showSecondHeading;
+  -webkit-animation-delay: 1500ms;
+          animation-delay: 1500ms;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+header .text-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  top: 30px;
+}
+header a {
+  margin-top: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0 25px;
+  height: 50px;
+  border-radius: 5px;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  background-color: #edc63e;
+}
+header a i {
+  margin-left: 10px;
+}
+header a:hover {
+  background-color: #ebbf27;
+}
+
+main section {
+  overflow: hidden;
+  padding: 75px 0;
+}
+main section h2:first-child {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #2a2a2a;
+  font-weight: bold;
+  font-size: 35px;
+  height: 45px;
+  margin-bottom: 75px;
+}
+main section:not(#skills) figure ~ figure {
+  margin-top: 50px;
+}
+main #skills .skills__item {
+  width: 100%;
+  text-align: center;
+}
+main #skills .skills__item ~ .skills__item {
+  margin-top: 40px;
+}
+main #skills .skills__item img {
+  display: inline-block;
+}
+main #skills .skills__item figcaption {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+main #skills .skills__item figcaption p:first-child {
+  margin: 10px 0 15px 0;
+  font-size: 27px;
+}
+main #skills .skills__item figcaption p:last-child {
+  font-weight: bold;
+  color: #2a2a2a;
+}
+main #creation {
+  border-top: 1px solid #dedede;
+  background-color: #ebebeb;
+}
+main #creation figure {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 1px 1px 4px 1px rgba(42, 42, 42, 0.25);
+  border: 1px solid #c5c5c5;
+}
+main #creation figure:not(:nth-of-type(-n+3)) img {
+  -o-object-position: top;
+     object-position: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main #creation figure:last-of-type + small {
+  display: block;
+  width: 100%;
+  height: 60px;
+  color: #791386;
+  line-height: 60px;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: center;
+}
+main #creation figure img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: initial auto -4px auto;
+}
+main #creation figure figcaption {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  border-top: 2px solid #d2d2d2;
+  background-color: #df9e55;
+  color: #fff;
+  height: 155px;
+}
+main #creation figure figcaption h3 {
+  margin-bottom: 15px;
+}
+main #creation figure figcaption h3 a {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #daebf8;
+}
+main #about ul {
+  position: relative;
+}
+main #about ul::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  height: 100%;
+  width: 1.5px;
+  background-color: #ebebeb;
+}
+main #about ul li {
+  margin-bottom: 30px;
+  padding-left: 88px;
+  position: relative;
+}
+main #about ul li .bx {
+  display: none;
+}
+main #about ul li h3, main #about ul li p {
+  text-align: left;
+}
+main #about ul li img {
+  left: 0;
+  position: absolute;
+  box-shadow: 0 0 1px 4px #ebebeb, 0 0 1px 6px #c5c5c5;
+  border-radius: 50%;
+}
+main #about ul li h3 {
+  margin-bottom: 15px;
+}
+main #about ul li h3 a {
+  color: #2074b3;
+}
+main #contact {
+  background-color: #2a2a2a;
+}
+main #contact h2 {
+  color: #edc63e;
+}
+main #contact ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+main #contact ul li {
+  color: #edc63e;
+  flex-grow: 1;
+  width: 100%;
+  padding: 12px 0;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  transition: all 150ms;
+  margin-bottom: 25px;
+}
+main #contact ul li:first-child {
+  margin-right: 10px;
+}
+main #contact ul li:nth-child(2) {
+  margin-left: 10px;
+}
+main #contact ul li:nth-child(-n+2) {
+  width: calc(50% - 10px);
+}
+main #contact ul li:hover {
+  background-color: #f8f8f8;
+  color: #111111;
+}
+main #contact ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main #contact address {
+  color: #c5c5c5;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(232, 232, 232, 0.37);
+}
+main #contact address small {
+  margin: 10px 0;
+  display: block;
+}
+main #contact address, main #contact address iframe {
+  width: 100%;
+}
+
+footer {
+  border-top: 1px solid #2a2a2a;
+  background-color: #2a2a2a;
+  height: 60px;
+  color: #ebebeb;
+  text-align: center;
+  line-height: 60px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  nav {
+    box-shadow: none;
+    background-color: transparent;
+    height: 80px;
+    font-size: 14px;
+    transform: scale(1.1);
+  }
+  nav ul {
+    height: 100%;
+    justify-content: center;
+    flex-direction: row;
+  }
+  nav ul #brand {
+    font-size: 1.5em;
+    height: 80px;
+    order: 0;
+  }
+  nav ul #brand box-icon {
+    display: none;
+  }
+  nav ul li:not(#brand) {
+    height: auto !important;
+  }
+  nav ul li:not(#brand) a {
+    width: auto;
+    height: auto;
+    position: relative;
+  }
+  nav ul li:not(#brand) a::before {
+    left: 50%;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    position: absolute;
+    bottom: -12px;
+    background-color: #edc63e;
+    transition: all 150ms;
+  }
+  nav ul li:not(#brand) a::after {
+    right: 50%;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    position: absolute;
+    bottom: -12px;
+    background-color: #edc63e;
+    transition: all 150ms;
+  }
+  nav ul li:not(#brand) a:hover::after, nav ul li:not(#brand) a:hover::before {
+    width: 50%;
+  }
+  nav ul li:not(:last-child) {
+    margin-right: 20px;
+  }
+  nav ul li:hover a {
+    color: inherit;
+  }
+
+  header {
+    background-attachment: fixed;
+    height: 100vh;
+  }
+  header h1 {
+    font-size: 50px;
+  }
+  header h2 {
+    font-size: 25px;
+  }
+
+  main section {
+    padding: 110px 0;
+  }
+  main section figure ~ figure {
+    margin-top: 0;
+  }
+  main section:not(#skills) figure ~ figure {
+    margin-top: 0;
+  }
+  main #skills .skills__item {
+    width: calc(100% / 3);
+  }
+  main #skills .skills__item:nth-of-type(n+4) {
+    margin-top: 60px !important;
+  }
+  main #skills .skills__item ~ .skills__item {
+    margin-top: 0;
+  }
+  main #creation figure {
+    opacity: 0;
+    margin-right: 25px;
+    width: calc(100% / 3 - 25px);
+  }
+  main #creation figure:nth-child(3n+3) {
+    margin-right: 0;
+    width: calc(100% / 3);
+  }
+  main #creation figure:nth-child(n+4) {
+    margin-top: 50px;
+  }
+  main #about ul {
+    width: 80%;
+    margin: 0 auto;
+  }
+  main #about ul::before {
+    display: none;
+  }
+  main #about ul li {
+    z-index: 1;
+    opacity: 0;
+    width: 50%;
+  }
+  main #about ul li:nth-child(odd) {
+    padding: 0 15px 0 88px;
+    left: -15%;
+    transform: translateX(-100%);
+  }
+  main #about ul li:nth-child(odd)::after {
+    z-index: -1;
+    right: -50%;
+    bottom: 0;
+    border-top-right-radius: 15px;
+    border-top: 2px solid #db9240;
+    border-right: 2px solid #db9240;
+  }
+  main #about ul li:nth-child(odd) .bx {
+    transform: translateX(calc(50% - 2px));
+    right: -50%;
+  }
+  main #about ul li:nth-child(even) {
+    padding: 0 88px 0 15px;
+    flex-direction: column;
+    display: flex;
+    right: -15%;
+    transform: translateX(200%);
+  }
+  main #about ul li:nth-child(even) .bx {
+    left: -50%;
+    transform: translateX(calc(-50% + 2px));
+  }
+  main #about ul li:nth-child(even)::before {
+    left: -50%;
+    border-top-left-radius: 15px;
+    border-top: 2px solid #db9240;
+    border-left: 2px solid #db9240;
+  }
+  main #about ul li:nth-child(even) img {
+    left: auto;
+    right: 0;
+  }
+  main #about ul li:not(:last-child)::after, main #about ul li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    bottom: 0;
+  }
+  main #about ul li address {
+    display: inline-block;
+  }
+  main #about ul li .bx {
+    display: inline-block;
+    position: absolute;
+    font-size: 25px;
+    color: #db9240;
+    z-index: 2;
+    bottom: -15.5px;
+  }
+  main #about ul li h3, main #about ul li p {
+    text-align: inherit;
+  }
+  main #contact ul li {
+    flex-grow: 0;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+  main #contact ul li:nth-child(-n+2), main #contact ul li:nth-child(4), main #contact ul li:nth-child(5) {
+    width: calc(50% - 10px);
+  }
+  main #contact ul li:nth-child(4) {
+    margin-right: 10px;
+  }
+  main #contact ul li:nth-child(5) {
+    margin-left: 10px;
+  }
+  main #contact ul li a {
+    padding: 17px 0;
+    font-size: 21px;
+  }
+  main #contact address {
+    text-align: left;
+  }
+}

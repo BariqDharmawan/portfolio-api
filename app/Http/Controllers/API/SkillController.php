@@ -6,6 +6,7 @@ use App\Models\Skill;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\SkillRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class SkillController extends Controller
 {
@@ -44,15 +45,15 @@ class SkillController extends Controller
     {
         $editSkill = Skill::findOrFail($id);
         $editSkill->update([
-            'name' => ucwords($request->name),
-            'category' => $request->category,
+            'name' => Str::ucfirst($request->name),
+            'category_id' => $request->category_id,
             'start_from' => $request->start_from
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Successfully updated skill named ' . $editSkill->name,
-            'data' => Skill::findOrFail($editSkill->id)
+            'data' => $editSkill
         ], 200);
     }
 

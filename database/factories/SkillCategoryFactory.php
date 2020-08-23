@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(SkillCategory::class, function (Faker $faker) {
     return [
-        'category' => $faker->randomElement([
+        'category' => $faker->unique()->randomElement([
             'frontend-framework',
             'backend-framework',
             'basic-stack',

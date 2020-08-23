@@ -13,7 +13,7 @@ class CreateContactTable extends Migration
      */
     public function up()
     {
-        Schema::create('my_contact', function (Blueprint $table) {
+        Schema::create('contact', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->enum('name', [
                 'Instagram', 'Facebook', 'Whatsapp', 'Twitter', 'Linkedin', 'Bitbucket',
@@ -33,6 +33,6 @@ class CreateContactTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sosial_media');
+        Schema::dropIfExists('contact');
     }
 }

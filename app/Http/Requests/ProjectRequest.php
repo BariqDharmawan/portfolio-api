@@ -24,7 +24,7 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|alpha_space|unique:my_project|max:50',
+            'title' => 'required|alpha_space|unique:project|max:50',
             'finished_date' => 'required|date|before_or_equal:today|after:2000-01-01',
             'is_teamwork' => 'required|boolean',
             'desc' => 'required|string|min:10|max:255'

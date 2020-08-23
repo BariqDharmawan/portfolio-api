@@ -20,7 +20,7 @@ class CreateSkillsTable extends Migration
             $table->string('slug');
             $table->year('start_from');
             $table->unsignedInteger('user_id');
-            $table->uuid('category_id');
+            $table->uuid('category_id')->nullable();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('my_skill');
+        Schema::dropIfExists('skill');
     }
 }

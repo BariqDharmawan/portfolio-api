@@ -3,7 +3,7 @@
 /** @var Factory $factory */
 
 use App\Models\Contact;
-use App\Models\User;
+use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 

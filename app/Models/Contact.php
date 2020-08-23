@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class Contact extends Model
 {
-    protected $table = 'my_contact';
+    protected $table = 'contact';
     protected $fillable = ['name', 'url', 'user_id'];
 
     public $timestamps = false;

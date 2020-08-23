@@ -11,11 +11,16 @@ class SkillCategoryController extends Controller
 
     public function index()
     {
-        return response()->json(SkillCategory::all());
+        $skillCategory =  SkillCategory::orderBy('category', 'ASC')->get();
+        return response()->json($skillCategory);
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'category' => 'required|unique:App\Models\SkillCategory'
+        ]);
+
         $newCategory = SkillCategory::create([
             'category' => $request->category
         ]);
@@ -41,7 +46,7 @@ class SkillCategoryController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Successfully updated skill category ' . $originalCategory . ' become ' . $editSkill->category,
+            'message' => "Successfully updated skill category $originalCategory become $editSkill->category",
             'data' => $editSkill
         ]);
     }
