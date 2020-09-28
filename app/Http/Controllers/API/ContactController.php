@@ -6,9 +6,22 @@ use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ContactController extends Controller
 {
+
+    protected function saveContact(Contact $contact, Request $request)
+    {
+        $contactName = $request->name;
+
+        $contact->name = $contactName;
+        $contact->slug = Str::slug($contactName);
+        $contact->value = $request->value;
+        $contact->user_id = $request->user_id;
+        $contact->save();
+    }
 
     /**
      * Display a listing of the resource.
@@ -17,7 +30,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $socialMedia = Contact::orderBy('slug', 'ASC')->get();
+        $socialMedia = Contact::orderBy('name', 'ASC')->get();
         return response()->json($socialMedia);
     }
 
@@ -29,10 +42,14 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $contact = Contact::create([
-            'name' => ucwords($request->name),
-            'url' => $request->url
-        ]);
+        $contactName = $request->name;
+
+        $contact = new Contact;
+        $contact->name = Str::ucfirst($contactName);
+        $contact->slug = Str::slug($contactName);
+        $contact->value = $request->value;
+        $contact->user_id = $request->user_id;
+        $contact->save();
 
         return response()->json([
             'success' => true,
@@ -63,10 +80,7 @@ class ContactController extends Controller
     public function update(ContactRequest $request, $id)
     {
         $updateContact = Contact::findOrFail($id);
-        $updateContact->update([
-            'name' => ucwords($request->name),
-            'url' => $request->url
-        ]);
+        $this->saveContact($updateContact, $request);
 
         return response()->json([
             'success' => true,

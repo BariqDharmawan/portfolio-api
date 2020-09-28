@@ -24,11 +24,13 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "boxicons": "^2.0.5",
+        "jquery": "^3.5.1",
+        "path": "^0.12.7",
+        "tiny-slider": "^2.9.3",
         "vue": "^2.6.12",
         "vue-axios": "^2.1.5",
         "vue-router": "^3.4.3",
-        "path": "^0.12.7",
-        "boxicons": "^2.0.5",
-        "jquery": "^3.5.1"
+        "vue-slick-carousel": "^1.0.6"
     }
 }

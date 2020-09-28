@@ -37,209 +37,217 @@
             <div class="container">
                 <h2>Passionate</h2>
                 <div class="row">
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/html.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Html</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star-half' type='solid' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/css.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>CSS</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star-half' type='solid' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
+                    <div class="skills__item glider-contain">
+                        <div class="glider">
+                            <figure>
+                                <img src="{{ asset('img/html.webp') }}" height="80" alt="My Skills">
+                                <figcaption>
+                                    <p>Html</p>
+                                    <p>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon name='star-half' type='solid' ></box-icon>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="{{ asset('img/css.webp') }}" height="80" alt="My Skills">
+                                <figcaption>
+                                    <p>CSS</p>
+                                    <p>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon name='star-half' type='solid' ></box-icon>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <button aria-label="Previous" class="glider-prev">«</button>
+                        <button aria-label="Next" class="glider-next">»</button>
                     </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/laravel.svg') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Laravel</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star'></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/php.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>PHP Native</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star'></box-icon>
-                                    <box-icon name='star'></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
+                    <div class="skills__item glider-contain">
+                        <div class="glider">
+                            <figure>
+                                <img src="{{ asset('img/laravel.svg') }}" height="80" alt="My Skills">
+                                <figcaption>
+                                    <p>Laravel</p>
+                                    <p>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon name='star'></box-icon>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="{{ asset('img/php.webp') }}" height="80" alt="My Skills">
+                                <figcaption>
+                                    <p>PHP Native</p>
+                                    <p>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon type='solid' name='star'></box-icon>
+                                        <box-icon name='star'></box-icon>
+                                        <box-icon name='star'></box-icon>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <button aria-label="Previous" class="glider-prev">«</button>
+                        <button aria-label="Next" class="glider-next">»</button>
                     </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/js.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>JS Native</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/jquery.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Jquery</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/gsap.webp') }}" height="90" alt="My Skills">
-                            <figcaption>
-                                <p>Greenshock Animation</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/git.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>git</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star-half' type='solid' ></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/webpack.webp') }}" height="90" alt="My Skills">
-                            <figcaption>
-                                <p>Webpack</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/bootstrap.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Bootstrap</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star-half' type='solid' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/sass.webp') }}" height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Sass</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/stylus.svg') }} " height="80" alt="My Skills">
-                            <figcaption>
-                                <p>Stylus</p>
-                                <p>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon type='solid' name='star'></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                    <box-icon name='star' ></box-icon>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="skills__item">
-                        <figure>
-                            <img src="{{ asset('img/xd.webp') }}" height="90" alt="My Skills">
-                            <figcaption>
-                                <p>Adobe XD</p>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon name='star-half' type='solid' ></box-icon>
-                                <box-icon name='star' ></box-icon>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/photoshop.webp') }}" height="90" alt="My Skills">
-                            <figcaption>
-                                <p>Photoshop</p>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon name='star' ></box-icon>
-                                <box-icon name='star' ></box-icon>
-                                <box-icon name='star' ></box-icon>
-                            </figcaption>
-                        </figure>
-                        <figure>
-                            <img src="{{ asset('img/figma.webp') }}" height="90" alt="My Skills">
-                            <figcaption>
-                                <p>Figma</p>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon type='solid' name='star'></box-icon>
-                                <box-icon name='star' ></box-icon>
-                                <box-icon name='star' ></box-icon>
-                            </figcaption>
-                        </figure>
-                    </div>
+{{--                    <div class="skills__item">--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/js.webp') }}" height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>JS Native</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/jquery.webp') }}" height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Jquery</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/gsap.webp') }}" height="90" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Greenshock Animation</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                    </div>--}}
+{{--                    <div class="skills__item">--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/git.webp') }}" height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>git</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star-half' type='solid' ></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/webpack.webp') }}" height="90" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Webpack</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                    </div>--}}
+{{--                    <div class="skills__item">--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/bootstrap.webp') }}" height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Bootstrap</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star-half' type='solid' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                    </div>--}}
+{{--                    <div class="skills__item">--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/sass.webp') }}" height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Sass</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/stylus.svg') }} " height="80" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Stylus</p>--}}
+{{--                                <p>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                    <box-icon name='star' ></box-icon>--}}
+{{--                                </p>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                    </div>--}}
+{{--                    <div class="skills__item">--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/xd.webp') }}" height="90" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Adobe XD</p>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon name='star-half' type='solid' ></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/photoshop.webp') }}" height="90" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Photoshop</p>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                        <figure>--}}
+{{--                            <img src="{{ asset('img/figma.webp') }}" height="90" alt="My Skills">--}}
+{{--                            <figcaption>--}}
+{{--                                <p>Figma</p>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon type='solid' name='star'></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                                <box-icon name='star' ></box-icon>--}}
+{{--                            </figcaption>--}}
+{{--                        </figure>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </section>

@@ -17,7 +17,7 @@ class CreateSkillCategoriesTable extends Migration
             $table->uuid('id')->primary();
             //frontend-framework: bootstrap, vue js, jquery. backend-framework: laravel, adonis.
             //basic-stack: php, js, html, css. tools: git, webpack,
-            $table->string('category');
+            $table->string('category', 20);
         });
     }
 

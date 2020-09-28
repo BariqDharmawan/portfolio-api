@@ -17,11 +17,3 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'landing');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::prefix('dashboard')->group(function (){
-    Route::get('/', 'HomeController@dashboard');
-    Route::get('{any}', function (){
-        return view('layouts.master');
-    })->where('any', '.*');
-});

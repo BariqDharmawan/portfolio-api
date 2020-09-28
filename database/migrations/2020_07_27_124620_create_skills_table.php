@@ -16,11 +16,12 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skill', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug');
             $table->year('start_from');
             $table->unsignedInteger('user_id');
             $table->uuid('category_id')->nullable();
+            $table->timestamps();
         });
     }
 

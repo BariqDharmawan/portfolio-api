@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/portfolio-backend.iml" filepath="$PROJECT_DIR$/.idea/portfolio-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../portfolio-frontend/.idea/portfolio-frontend.iml" filepath="$PROJECT_DIR$/../portfolio-frontend/.idea/portfolio-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../portfolio-ui/.idea/portfolio-ui.iml" filepath="$PROJECT_DIR$/../portfolio-ui/.idea/portfolio-ui.iml" />
     </modules>
   </component>
 </project>

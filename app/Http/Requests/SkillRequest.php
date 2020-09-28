@@ -27,16 +27,20 @@ class SkillRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'name' => 'required|string|unique:project|max:50',
+                    'name' => 'bail|required|string|unique:skill|max:50',
                     'category_id' => 'required',
-                    'start_from' => 'required|integer|min:' . Carbon::now()->startOfCentury()->year . '|max:' . date('Y')
+                    'start_from' => 'required|integer|min:' .
+                        Carbon::now()->startOfCentury()->year . '|max:' . date('Y'),
+                    'user_id' => 'required'
                 ];
                 break;
             case 'PUT':
                 return [
-                    'name' => 'bail|required|string|max:50',
+                    'name' => 'required|string|max:50',
                     'category_id' => 'bail|required',
-                    'start_from' => 'bail|required|integer|min:' . Carbon::now()->startOfCentury()->year . '|max:' . date('Y')
+                    'start_from' => 'bail|required|integer|min:' .
+                        Carbon::now()->startOfCentury()->year . '|max:' . date('Y'),
+                    'user_id' => 'required'
                 ];
             break;
         }

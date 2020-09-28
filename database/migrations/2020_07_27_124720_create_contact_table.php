@@ -16,13 +16,12 @@ class CreateContactTable extends Migration
         Schema::create('contact', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->enum('name', [
-                'Instagram', 'Facebook', 'Whatsapp', 'Twitter', 'Linkedin', 'Bitbucket',
-                'Gmail', 'Snapchat', 'Pinterest', 'Line', 'Telegram', 'Medium', 'Path'
+                'instagram', 'facebook', 'whatsapp', 'twitter', 'linkedin', 'bitbucket',
+                'email', 'snapchat', 'pinterest', 'line', 'telegram', 'medium', 'path'
             ]);
-            $table->string('url');
+            $table->string('value');
             $table->string('slug');
             $table->unsignedInteger('user_id');
-            $table->timestamp('created_at');
         });
     }
 

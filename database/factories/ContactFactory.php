@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Factory;
 $factory->define(Contact::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->randomElement($array = array(
-            'Instagram', 'Facebook', 'Whatsapp', 'Twitter', 'Linkedin', 'Bitbucket', 'Gmail'
+            'instagram', 'facebook', 'whatsapp', 'twitter', 'linkedin', 'bitbucket', 'email'
         )),
-        'url' => $faker->unique()->randomElement($array = array(
+        'value' => $faker->unique()->randomElement($array = array(
             'https://www.instagram.com/bariqdharmawans', 'https://www.facebook.com/BariqDharmawan16',
             'https://twitter.com/BariqDharmawan', 'https://www.linkedin.com/in/dharmawan03',
             'https://bitbucket.org/dharmawans', 'dharmawan.muhammad03@gmail.com',
             'https://wa.me/6287771406656',
         )),
-        'user_id' => User::where('username', 'bariqdharmawan')->first()
+        'user_id' => User::where('username', 'bariqdharmawan')->first()->id
     ];
 });

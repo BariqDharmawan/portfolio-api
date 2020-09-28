@@ -3,74 +3,76 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Skill;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\SkillRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class SkillController extends Controller
 {
 
-    public function index()
+//    public function __construct()
+//    {
+//        $this->middleware('auth:sanctum')->except(['index', 'show']);
+//    }
+
+    protected function returnResponseJson($data = '', $message = '', $code = '')
     {
-        return response()->json(Skill::all());
+        return response()->json([
+            'data' => $data,
+            'message' => $message,
+        ], $code);
     }
 
-    /**
-     * Store a newly skill
-     * @param SkillRequest $request
-     * @return JsonResponse
-     */
-    public function store(SkillRequest $request)
+    protected function saveSkill(Skill $skill, Request $request)
     {
-        $newSkill = Skill::create([
-            'name' => ucwords($request->name),
-            'category' => $request->category,
-            'start_from' => $request->start_from
-        ]);
+        $skillName = $request->name;
+        $skill->name = Str::ucfirst($skillName);
+        $skill->slug = Str::slug($skillName);
+        $skill->category_id = $request->category_id;
+        $skill->start_from = $request->start_from;
+        $skill->user_id = $request->user_id;
+        $skill->save();
+    }
+
+    public function index() //done
+    {
+        return response()->json(Skill::latest()->get());
+    }
+
+    public function store(SkillRequest $request) //done
+    {
+        $skill = new Skill;
+        $this->saveSkill($skill, $request);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Successfully add new skill name ' . $newSkill->name,
-            'data' => Skill::findOrFail($newSkill->id)
+            'message' => "Successfully add new skill with name $skill->name",
+            'data' => $skill,
         ], 201);
     }
 
-    public function show($id)
+    public function show(Skill $skill) //done
     {
-        return response()->json(Skill::findOrFail($id));
+        return response()->json($skill);
     }
 
-    public function update(SkillRequest $request, $id)
+    public function update(SkillRequest $request, Skill $skill)
     {
-        $editSkill = Skill::findOrFail($id);
-        $editSkill->update([
-            'name' => Str::ucfirst($request->name),
-            'category_id' => $request->category_id,
-            'start_from' => $request->start_from
-        ]);
+        $this->saveSkill($skill, $request);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Successfully updated skill named ' . $editSkill->name,
-            'data' => $editSkill
+            'message' => "Successfully updated skill with name "  . $skill->name,
+            'data' => $skill
         ], 200);
     }
 
-    /**
-     * Remove the specified skill.
-     *
-     * @param $id
-     * @return JsonResponse
-     */
-    public function destroy($id)
+    public function destroy($id) //done
     {
         $deleteSkill = Skill::findOrFail($id);
         $deleteSkill->delete();
+
         return response()->json([
-            'success' => true,
-            'message' => 'Successfully deleted skill called ' . $deleteSkill->name,
-            'data' => $deleteSkill
-        ]);
+            'message' => 'Successfully deleted skill called ' . $deleteSkill->name
+        ], 200);
     }
 }

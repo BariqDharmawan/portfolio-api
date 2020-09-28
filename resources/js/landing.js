@@ -1,6 +1,8 @@
 import 'boxicons';
 import './plugin/plugin-jquery';
 import './plugin/TweenMax';
+import './components/VueSlickComponent';
+
 window.Vue = require('vue');
 
 const menuBtn = document.querySelector('#brand box-icon');
@@ -57,5 +59,5 @@ window.addEventListener('scroll', function (){
 footerTime.textContent = new Date().getFullYear();
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

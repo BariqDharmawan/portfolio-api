@@ -48,7 +48,7 @@
                                 </div>
                                 <a href="" class="btn btn-link d-inline-flex align-items-center"
                                         style="text-decoration: none;">
-                                        <img src="./../../assets/back-left.svg" alt="Back to skill">
+                                        <img src="" alt="Back to skill">
                                         <span class="ml-2 mr-auto">Back</span>
                                     </a>
                                 <button type="submit" class="btn btn-md float-right btn-success mr-2">
@@ -75,7 +75,7 @@
           }
         },
         created() {
-          axios.get(`http://localhost:8000/api/skill/${this.$route.params.id}`).then((response) => {
+          axios.get(`http://localhost:8000/api/skills/${this.$route.params.id}`).then((response) => {
             this.skill = response.data
           }).catch(error => {
             console.log(error)
@@ -86,7 +86,7 @@
         },
         methods: {
             skillUpdate() {
-                axios.put(`http://localhost:8000/api/skill/${this.$route.params.id}`, this.skill).
+                axios.put(`http://localhost:8000/api/skills/${this.$route.params.id}`, this.skill).
                 then(() => {
                   this.$router.push({name: 'skills'})
                 }).catch(error => {

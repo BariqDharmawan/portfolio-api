@@ -14,14 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::post('login', 'API\LoginController@index');
+Route::get('logout/{id}', 'API\LoginController@logout');
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    });
+});
+
 Route::namespace('API')->group(function(){
     Route::apiResources([
-        'skill-category' => 'SkillCategoryController',
-        'skill' => 'SkillController',
-        'contact' => 'ContactController',
-        'project' => 'ProjectController'
+        'skills' => 'SkillController',
+        'skill-categories' => 'SkillCategoryController',
+        'contacts' => 'ContactController',
+        'projects' => 'ProjectController'
     ]);
 });
