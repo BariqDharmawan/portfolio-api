@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller

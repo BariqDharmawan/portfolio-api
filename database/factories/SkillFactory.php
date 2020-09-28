@@ -3,7 +3,7 @@
 /** @var Factory $factory */
 
 use App\Models\SkillCategory;
-use App\User;
+use App\Models\User;
 use App\Models\Skill;
 use Illuminate\Database\Eloquent\Factory;
 use Faker\Generator as Faker;
