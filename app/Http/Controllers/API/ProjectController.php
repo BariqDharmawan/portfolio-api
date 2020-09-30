@@ -37,7 +37,6 @@ class ProjectController extends Controller
         ]);
 
         return response()->json([
-            'success' => true,
             'message' => 'Successfully add new project with title ' . $project->title,
             'data' => $project
         ], 201);
@@ -54,7 +53,6 @@ class ProjectController extends Controller
         ]);
 
         return response()->json([
-            'success' => true,
             'message' => 'Successfully update project ' . $editProject->title,
             'data' => $editProject
         ], 200);
@@ -63,12 +61,11 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  $id
+     * @param  Project $project
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
         return response()->json($project);
     }
 
@@ -83,9 +80,7 @@ class ProjectController extends Controller
         $deleteProject = Project::findOrFail($id);
         $deleteProject->delete();
         return response()->json([
-            'success' => true,
-            'message' => 'Succesfully remove project named ' . $deleteProject->title,
-            'data' => $deleteProject
-        ]);
+            'message' => 'Successfully remove project named ' . $deleteProject->title
+        ], 200);
     }
 }
