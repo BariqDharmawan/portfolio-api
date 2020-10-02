@@ -28,6 +28,7 @@ Route::namespace('API')->group(function(){
         'skills' => 'SkillController',
         'skill-categories' => 'SkillCategoryController',
         'contacts' => 'ContactController',
-        'projects' => 'ProjectController'
+        'projects' => 'ProjectController',
+        'timelines' => 'TimelineController'
     ]);
 });

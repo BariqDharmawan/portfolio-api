@@ -16,7 +16,7 @@ class ContactController extends Controller
     {
         $contactName = $request->name;
 
-        $contact->name = $contactName;
+        $contact->name = Str::ucfirst($contactName);
         $contact->slug = Str::slug($contactName);
         $contact->value = $request->value;
         $contact->user_id = $request->user_id;
@@ -42,19 +42,12 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $contactName = $request->name;
-
-        $contact = new Contact;
-        $contact->name = Str::ucfirst($contactName);
-        $contact->slug = Str::slug($contactName);
-        $contact->value = $request->value;
-        $contact->user_id = $request->user_id;
-        $contact->save();
+        $newContact = new Contact;
+        $this->saveContact($newContact, $request);
 
         return response()->json([
-            'success' => true,
-            'message' => 'Successfully add your ' . $contact->name . ' account',
-            'data' => $contact
+            'message' => 'Successfully add your ' . $newContact->name . ' account',
+            'data' => $newContact
         ], 201);
     }
 
@@ -83,7 +76,6 @@ class ContactController extends Controller
         $this->saveContact($updateContact, $request);
 
         return response()->json([
-            'success' => true,
             'message' => 'Successfully update your ' . $updateContact->name . ' account',
             'data' => $updateContact
         ], 200);
@@ -101,9 +93,7 @@ class ContactController extends Controller
         $deleteContact->delete();
 
         return response()->json([
-            'success' => true,
-            'message' => 'Successfully remove your ' . $deleteContact->name . ' account',
-            'data' => $deleteContact
+            'message' => 'Successfully remove your ' . $deleteContact->name . ' account'
         ]);
     }
 }

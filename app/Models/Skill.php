@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 class Skill extends Model
